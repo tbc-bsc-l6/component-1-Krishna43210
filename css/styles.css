@@ -42,3 +42,6 @@ table.paleBlueRows tfoot {
 table.paleBlueRows tfoot td {
     font-size: 14px;
 }
+input{
+    margin-left: 20px;
+}

@@ -1,7 +1,4 @@
-/*
-This is a back up file that can be copied and pasted into the products.json if that becomes corrupted",
-DONT COPY AND PASTE THIS COMMENT INTO THE FILE AS JSON DOES NOT SUPOORT COMMENTS
-*/
+
 
 [
   {
@@ -21,5 +18,23 @@ DONT COPY AND PASTE THIS COMMENT INTO THE FILE AS JSON DOES NOT SUPOORT COMMENTS
     "mainname": "Georgia",
     "price": 8.5,
     "playlength": 45
+  },
+  {
+    "id": 3,
+    "type": "game",
+    "title": "Animal Crossing : New Horizon",
+    "firstname": "Nintendo",
+    "mainname": "Switch",
+    "price": 44.99,
+    "numPegi": 3
+  },
+  {
+    "id": 4,
+    "type": "game",
+    "title": "GTA",
+    "firstname": "Nintendo",
+    "mainname": "Switch",
+    "price": 44.99,
+    "numPegi": 4
   }
 ]

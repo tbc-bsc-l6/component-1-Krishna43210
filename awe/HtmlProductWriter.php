@@ -34,10 +34,12 @@ class HtmlProductWriter extends ShopProductWriter
         foreach ($this->products as $product) {
          if($product instanceof BookProduct) $bookproducts[] = $product;
          if($product instanceof CdProduct) $cdproducts[] = $product;
+         if($product instanceof gameproduct) $gameproducts[]=$product;
         }
 
         $booktable = $this->generateBookTable($bookproducts);
         $cdtable = $this->generateCdTable($cdproducts);
+        $gametable =$this->generateGameTable($gameproducts);
 
         $addProduct = $this->generateAddProductForm();
 
@@ -46,6 +48,8 @@ class HtmlProductWriter extends ShopProductWriter
             . $booktable .
             '<br />'
             .$cdtable.
+            '<br />'
+            .$gametable.
             '<br />'
             .$addProduct .
             '</body>';
@@ -113,35 +117,74 @@ class HtmlProductWriter extends ShopProductWriter
             </table>';
     }
 
+    private function generateGameTable($gameproducts)
+    {
+        $contents = '';
+        foreach ($gameproducts as $game) {
+
+            //calling get function to assign the value on variable and storing it in the new variable called $contents
+            $contents .= '<tr>
+                  <td>'.$game->getFullName().'</td>'
+                .'<td>'.$game->getTitle().'</td>'
+                .'<td>'.$game->getNumberOfPegi().'</td>'
+                .'<td>'.$game->getPrice().'</td>'
+                .'<td>'.'<a href="./index.php?delete='.$game->getId().'">X</a>'.'</td>
+                </tr>';
+        }
+        return
+
+        /*creating table
+        creating tablehead
+        */
+            '
+            <h3>GAMES</h3>
+            <table class="paleBlueRows equal-width">
+                 <thead>
+                    <tr>                    
+                        <th>CONSOLE</th>
+                        <th>TITLE</th>
+                        <th>PEGI</th>
+                        <th>PRICE</th>
+                        <th>DELETE</th>
+                    </tr>
+                    </thead>
+                    <tbody>'
+            .$contents.//displaying the content of the table
+            '</tbody>
+            </table>';
+    }
+
+
     private function generateAddProductForm()
     {
         return '
           <hr />
           <h2>ADD NEW PRODUCT</h2>
          <form action="./index.php" method="post">
-          <label for="producttype">Product Type:</label>
+          <h4><label for="producttype">Product Type:</label></h4>&nbsp;&nbsp
           <select id="producttype" name="producttype">
                 <option value="cd">CD</option>
                 <option value="book">Book</option>
+                <option value="game">Game</option>
           </select> 
           <br />
           <br />
-         <label for="name">Author / Artist:</label><br />
-         <label for="fname">First Name:</label>
+          <h3><label for="name">Author / Artist:</label></h3><br />
+          <h4><label for="fname">First Name:</label></label></h4>&nbsp;&nbsp
            <input type="text" id="fname" name="fname"><br />
-          <label for="sname">Main Name / Surname:</label>
+           <h4><label for="sname">Main Name / Surname:</label></h4></label>&nbsp;&nbsp
            <input type="text" id="sname" name="sname">
            <br />
            <br />
-         <label for="title">Title:</label>
+           <h4><label for="title">Title:</label></label></h4>&nbsp;&nbsp
            <input type="text" id="title" name="title">
            <br />
            <br />
-         <label for="pages">Pages/Duration:</label>
+           <h4><label for="pages">Pages/Duration:</label></label></h4>&nbsp;&nbsp
            <input type="text" id="pages" name="pages">
            <br />
            <br />
-          <label for="price">Price:</label>
+           <h4><label for="price">Price:</label></label></h4>&nbsp;&nbsp
            <input type="text" id="price" name="price">
            <br />
            <br /> 
