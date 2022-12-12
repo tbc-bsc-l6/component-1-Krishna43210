@@ -14,7 +14,7 @@ The form should allow for products of this type to be entered. </p>
 <p>
 The end result could take a form similar to:
 </p>
-<img src='readme_images/End.jpg' width='450' />
+<img src='readme_images/after.JPG' width='450' />
 
 <hr />
 
